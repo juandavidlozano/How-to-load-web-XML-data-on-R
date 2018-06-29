@@ -1,0 +1,28 @@
+---
+title: "How to load XML files in R from the web"
+author: "Juan Lozano"
+date: "June 29, 2018"
+output: html_document
+---
+
+
+
+## How to load XML files in R from the web
+
+Follow this instructions to load XML files in R from the web:
+
+1. Load the XML and RCurl Library
+```{r}
+library(XML)
+library(RCurl)
+```
+
+2. Assign the URL to a variable using the getURL() function, I will be using an exmaple here
+
+```{r}
+fileUrl <- getURL("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml")
+doc <- xmlTreeParse(fileUrl, useInternalNodes = TRUE)
+rootNode <- xmlRoot(doc) 
+```
+
+then you will be ready to read the rootnode and do search on it if needed.
